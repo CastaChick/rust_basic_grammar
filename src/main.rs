@@ -31,4 +31,35 @@ fn main() {
     let spaces = "     ";
     let spaces = spaces.len();
     println!("The length of spaces: {}", spaces);
+
+    // parse時には必ず型のアノテーションが必要
+    let guess: u32 = "42".parse().expect("Not a number!");
+    println!("the value of guess: {}", guess);
+
+    // Numeric operations
+    let _sum = 5 + 10; // 15
+    let _difference = 95.5 - 4.3; // 91.2
+    let _product = 4 * 30; // 120
+    let _quotient = 12.1 / 1.1; // 11
+    let _floored = 2 / 3; // 0
+    let _reminder = 43 % 5; // 3
+
+    // Tuple
+    let tup: (i32, i8, i64) = (10, 5, 20);
+    let (x, y, z) = tup;
+    let first_value = tup.0;
+    println!("The first value of tup: {}", first_value);
+    println!("The second value of tup: {}", tup.1);
+    println!("The values of tup: {}, {}, {}", x, y, z);
+    println!("The values of tup: {:?}", tup);
+    
+    // Array
+    let arr: [i32; 5] = [0, 1, 2, 3, 4];
+    println!("The values of arr: {:?}", arr);
+    println!("The first value of arr: {}", arr[0]);
+    let repeat_arr = [3; 5]; // [3, 3, 3, 3, 3]
+    println!("The values of repeat_arr: {:?}", repeat_arr);
+
+
+
 }
