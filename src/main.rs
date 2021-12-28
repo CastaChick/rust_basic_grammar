@@ -6,6 +6,7 @@ fn main() {
     parameter_function(100);
     let five = return_five();
     println!("The value of five: {}", five);
+    control_flow();
 }
 
 fn variables_and_mutability() {
@@ -79,4 +80,55 @@ fn parameter_function(x: i32) {
 fn return_five() -> i32 {
     // 式には行末のセミコロンをつけない
     5
+}
+
+fn control_flow() {
+    let number = 3;
+    println!("The values of number: {}", number);
+    if number < 5 {
+        println!("number < 5");
+    } else if number == 5{
+        println!("number == 5");
+    } else {
+        println!("number > 5");
+    }
+    
+    let condition = true;
+    // ifは式なので代入文の右辺に置く事ができる
+    let number = if condition {
+        5
+    } else {
+        // 全ての文において返ってくる値の型は同じである必要がある
+        // "test"
+        10
+    }; // 代入文なのでセミコロンが必要
+    println!("The value of number: {}", number);
+
+    let mut i = 0;
+    println!("Start loop");
+    loop {
+        i = i + 1;
+        println!("{} times", i);
+        if i >= 5 {
+            break
+        }
+    }
+
+    let mut i = 0;
+    println!("Start while loop");
+    while i < 5 {
+        i = i + 1;
+        println!("{} times", i);
+    }
+
+    let arr = [1, 2, 3, 4, 5];
+    println!("Print each values of {:?}", arr);
+    for element in arr.iter() {
+        println!("The value of element: {}", element);
+    }
+    
+    println!("Start for loop");
+    for i in 1..6 {
+        println!("{} times", i);
+    }
 }
