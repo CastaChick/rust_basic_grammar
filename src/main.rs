@@ -1,5 +1,14 @@
 const Z: u32 = 100;
+
 fn main() {
+    variables_and_mutability();
+    data_types();
+    parameter_function(100);
+    let five = return_five();
+    println!("The value of five: {}", five);
+}
+
+fn variables_and_mutability() {
     // let x = 5;
     // mutを付けると変数がmutableになる
     let mut x = 5;
@@ -31,7 +40,9 @@ fn main() {
     let spaces = "     ";
     let spaces = spaces.len();
     println!("The length of spaces: {}", spaces);
+}
 
+fn data_types() {
     // parse時には必ず型のアノテーションが必要
     let guess: u32 = "42".parse().expect("Not a number!");
     println!("the value of guess: {}", guess);
@@ -59,7 +70,13 @@ fn main() {
     println!("The first value of arr: {}", arr[0]);
     let repeat_arr = [3; 5]; // [3, 3, 3, 3, 3]
     println!("The values of repeat_arr: {:?}", repeat_arr);
+}
 
+fn parameter_function(x: i32) {
+    println!("The value of given parameter: {}", x);
+}
 
-
+fn return_five() -> i32 {
+    // 式には行末のセミコロンをつけない
+    5
 }
