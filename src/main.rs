@@ -93,6 +93,35 @@ fn enum_tutorial() {
     println!("My coin is {} cents", value_in_cents(my_coin));
 }
 
+use std::collections::HashMap;
+
+fn collections_tutorial() {
+    let v: Vec<i32> = Vec::new();
+    let v = vec![1, 2, 3]; // vector gen macro
+    println!("The values of vector: {:?}", v);
+    for i in &v {
+        println!("Value: {}", i);
+    }
+    let mut s = String::from("foo");
+    s.push_str("bar");
+    println!("{}", s);
+
+    let hello = "こんにちは";
+    // println!("{}", &hello[0..4]);
+    // マルチバイト文字の境目をスライスに設定するとpanicを起こす
+    println!("{}", &hello[0..6]);
+    for c in hello.chars() {
+        println!("{}", c);
+    }
+
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+    println!("Scores: {:?}", scores);
+    // HashMapの要素へのgetによるアクセスはOptionを返す
+    println!("Blue team score: {:?}", scores.get("Blue"))
+}
+
 fn main() {
     variables_and_mutability();
     data_types();
@@ -102,6 +131,7 @@ fn main() {
     control_flow();
     struct_tutorial();
     enum_tutorial();
+    collections_tutorial()
 }
 
 fn variables_and_mutability() {
