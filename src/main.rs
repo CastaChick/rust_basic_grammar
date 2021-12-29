@@ -66,6 +66,33 @@ fn struct_tutorial() {
     println!("squre 1: {:?}", squre1);
 }
 
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: Coin) -> u32 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+
+fn enum_tutorial() {
+    let x: i8 = 5;
+    let y: Option<i8> = Some(5);
+    // 型Tの値とOption<T>の値は同じ型と見なして計算できない
+    // println!("x + y = {}", x+y);
+    println!("x + y = {}", x + y.unwrap());
+    
+    let my_coin = Coin::Nickel;
+    println!("My coin is {} cents", value_in_cents(my_coin));
+}
+
 fn main() {
     variables_and_mutability();
     data_types();
@@ -74,6 +101,7 @@ fn main() {
     println!("The value of five: {}", five);
     control_flow();
     struct_tutorial();
+    enum_tutorial();
 }
 
 fn variables_and_mutability() {
