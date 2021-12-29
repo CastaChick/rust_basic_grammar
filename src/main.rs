@@ -1,5 +1,71 @@
 const Z: u32 = 100;
 
+#[derive(Debug)] // この指定でprintが可能になる
+struct User {
+    email: String,
+    username: String,
+    sign_in_count: u64,
+    active: bool,
+}
+
+fn build_user(email: String, username: String) -> User {
+    User {
+        email,
+        username,
+        sign_in_count: 1,
+        active: true,
+    }
+}
+
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+// implで構造体に紐づくメソッドの定義ができる
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+    
+    // selfを取らない関連関数の定義も可能
+    fn squre(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+
+fn struct_tutorial() {
+    let user1 = build_user("someone@example.com".to_string(), "someone123".to_string());
+    let user2 = User {
+        email: String::from("another@example.com"),
+        username: String::from("anotherusername567"),
+        ..user1
+    };
+    println!("The name of user1: {}", user1.username);
+    println!("The name of user2: {}", user2.username);
+    println!("The email of user2: {}", user2.email);
+    println!("The sign_in_count of user1: {}", user1.sign_in_count);
+    println!("The sign_in_count of user2: {}", user2.sign_in_count);
+    println!("The values of user1: {:#?}", user1);
+    println!(
+        "Are the active states of two users same: {}",
+         user1.active == user2.active
+    );
+
+    let rect1 = Rectangle {
+        width: 10,
+        height: 15,
+    };
+    println!("The area of rect1: {}", rect1.area());
+
+    let squre1 = Rectangle::squre(3);
+    println!("squre 1: {:?}", squre1);
+}
+
 fn main() {
     variables_and_mutability();
     data_types();
@@ -7,6 +73,7 @@ fn main() {
     let five = return_five();
     println!("The value of five: {}", five);
     control_flow();
+    struct_tutorial();
 }
 
 fn variables_and_mutability() {
